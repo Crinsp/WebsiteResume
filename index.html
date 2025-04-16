@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green ASCII Art</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            color: #00ff00;
+        }
+
+        /* === CRT EFFECTS === */
+        .crt {
+            position: relative;
+            overflow: hidden;
+            animation: crtFlicker 0.15s infinite;
+            border-radius: 25px;
+            box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.1);
+            transform: perspective(800px) translateZ(0) scale(1.02);
+            backface-visibility: hidden;
+        }
+
+        /* Glow effect */
+        .crt * {
+            text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00;
+        }
+
+        /* Scanlines overlay */
+        .crt::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0px,
+                rgba(0, 0, 0, 0) 2px,
+                rgba(0, 0, 0, 0.15) 3px,
+                rgba(0, 0, 0, 0.15) 4px
+            );
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Glassy reflection overlay (optional but awesome) */
+        .crt::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.04) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            pointer-events: none;
+            z-index: 11;
+        }
+
+        @keyframes crtFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 22%, 24%, 55% {
+                opacity: 0.95;
+            }
+        }
+
+        /* === PAGE STYLES === */
+        .navbar {
+            background-color: #111;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00ff00;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .nav-buttons button {
+            background: none;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 8px 16px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #00ff00;
+            color: #0a0a0a;
+        }
+
+        .ascii-title {
+            text-align: center;
+            padding: 30px;
+            font-size: 16px;
+            line-height: 1.3;
+            white-space: pre;
+        }
+
+        .content-section {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="crt">
+        <div class="navbar">
+            <h1>Gerritt's Terminal</h1>
+            <div class="nav-buttons">
+                <button onclick="alert('You clicked Home!')">Home</button>
+                <button onclick="alert('You clicked About!')">About</button>
+                <button onclick="alert('You clicked Projects!')">Projects</button>
+                <button onclick="alert('You clicked Resume!')">Resume</button>
+                <button onclick="alert('You clicked Contact!')">Contact</button>
+            </div>
+        </div>
+
+        <div class="ascii-title">
+            <pre>
+
+
+░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓█▓▒░      ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓████████▓▒░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░ ░▒▓█▓▒░     ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░ ░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░              
+░▒▓█████████████▓▒░░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓█▓▒░ 
+                                                                                                            
+                                                                                                            
+            </pre>
+        </div>
+
+        <div id="home" class="content-section">
+            <h2>Welcome to my website!!!</h2>
+            <p>This is a visual version of my LinkedIn and resume.</p>
+        </div>
+
+        <div id="personal-skills" class="content-section">
+            <h2>Personal Skills</h2>
+            <p>Technical Support - Java Development - Python Development - Software Development - Graphic Design - Team Management - IT Skills</p>
+        </div>
+
+        <div id="education" class="content-section">
+            <h2>Education</h2>
+            <p>Colorado State University 3.2 GPA — Fort Collins, CO</p>
+            <p>Bachelor of Science - Computer Science Cybersecurity — Aug. 2023 - May 2027</p>
+
+            <p>Louisiana State University 3.7 GPA — Baton Rouge, LA</p>
+            <p>Bachelor of Arts - Digital Arts / Computer Science Cybersecurity — Aug. 2023 - May 2024</p>
+        </div>
+
+        <div id="work-experience" class="content-section">
+            <h2>Work Experience</h2>
+            <p>Cold Line Specialist</p>
+            <p>Freddy's LLC at the Lory Student Center</p>
+        </div>
+
+        <div id="contact" class="content-section">
+            <h2>Contact</h2>
+            <p>Here's how to reach me.</p>
+        </div>
+    </div>
+</body>
+</html>
